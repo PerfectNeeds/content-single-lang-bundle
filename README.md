@@ -23,7 +23,7 @@ Installation is a quick (I promise!) 7 step process:
 ### Step 1: Download PNContentBundle using composer
 Require the bundle with composer:
 ```sh
-$ composer require perfectneeds/content-multi-lang-bundle "~1.0"
+$ composer require perfectneeds/content-single-lang-bundle "~1.0"
 ```
 ### Step 2: Enable the Bundle in AppKernel
 Require the bundle with composer:
@@ -363,7 +363,7 @@ class DynamicPageType extends AbstractType {
 Reporting an issue or a feature request
 ---------------------------------------
 
-Issues and feature requests are tracked in the [Github issue tracker](https://github.com/PerfectNeeds/content-multi-lang-bundle/issues).
+Issues and feature requests are tracked in the [Github issue tracker](https://github.com/PerfectNeeds/content-single-lang-bundle/issues).
 
 When reporting a bug, it may be a good idea to reproduce it in a basic project
 built using the [Symfony Standard Edition](https://github.com/symfony/symfony-standard)
