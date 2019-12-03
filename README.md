@@ -35,7 +35,6 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new VM5\EntityTranslationsBundle\VM5EntityTranslationsBundle(),
         new PN\MediaBundle\PNMediaBundle(),
         new \PN\ServiceBundle\PNServiceBundle(),
         new \PN\ContentBundle\PNContentBundle(),
@@ -86,7 +85,6 @@ If you're persisting your post via the Doctrine ORM, then your `Post` class shou
 namespace PN\Bundle\ContentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use VM5\EntityTranslationsBundle\Model\Translatable;
 
 // DON'T forget the following use statement!!!
 use PN\ContentBundle\Entity\Post as BasePost;
@@ -97,48 +95,15 @@ use PN\ContentBundle\Model\PostTrait;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="PN\Bundle\ContentBundle\Repository\PostRepository")
  */
-class Post extends BasePost implements Translatable {
+class Post extends BasePost {
 
     use PostTrait;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="PN\Bundle\ContentBundle\Entity\Translation\PostTranslation", mappedBy="translatable", cascade={"ALL"}, orphanRemoval=true)
-     */
-    protected $translations;
     
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
-}
-```
-
-```php
-<?php
-// src/PN/Bundle/ContentBundle/Entity/Translation/PostTranslation.php
-
-namespace PN\Bundle\ContentBundle\Entity\Translation;
-
-use Doctrine\ORM\Mapping as ORM;
-
-// DON'T forget the following use statement!!!
-use PN\ContentBundle\Entity\Translation\PostTranslation as BasePostTranslation;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="post_translations")
- */
-class PostTranslation extends BasePostTranslation {
-
-    /**
-     * @var
-     * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="PN\Bundle\ContentBundle\Entity\Post", inversedBy="translations")
-     * @ORM\JoinColumn(name="translatable_id", referencedColumnName="id")
-     */
-    protected $translatable;
-
 }
 ```
 
@@ -175,8 +140,6 @@ doctrine:
 pn_content:
     # The fully qualified class name (FQCN) of the Post class which you created in Step 3.
     post_class: PN\Bundle\ContentBundle\Entity\Post
-    # The fully qualified class name (FQCN) of the PostTranslation class which you created in Step 3.
-    post_translation_class: PN\Bundle\ContentBundle\Entity\Translation\PostTranslation
 ```
 
 ### Step 6: Import PNContentBundle routing files
@@ -220,7 +183,6 @@ Post.php
 namespace PN\Bundle\ContentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use VM5\EntityTranslationsBundle\Model\Translatable;
 use PN\ContentBundle\Entity\Post as BasePost;
 use PN\ContentBundle\Model\PostTrait;
 
@@ -229,15 +191,10 @@ use PN\ContentBundle\Model\PostTrait;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="PN\Bundle\CMSBundle\Repository\PostRepository")
  */
-class Post extends BasePost implements Translatable {
+class Post extends BasePost {
 
     use PostTrait;
-    
-     /**
-     * @ORM\OneToMany(targetEntity="PN\Bundle\ContentBundle\Entity\Translation\PostTranslation", mappedBy="translatable", cascade={"ALL"}, orphanRemoval=true)
-     */
-    protected $translations;
-    
+        
     // Add here your own relations
     
     /**

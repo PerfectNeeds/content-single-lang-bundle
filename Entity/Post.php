@@ -31,7 +31,7 @@ class Post {
     }
 
     public function getRelationalEntity() {
-        $excludeMethods = ['id', 'content', 'images', "currentTranslation", "__initializer__", "__isInitialized__", "__cloner__"];
+        $excludeMethods = ['id', 'content', 'images', "__initializer__", "__isInitialized__", "__cloner__"];
 
         $allObjects = get_object_vars($this);
         foreach ($allObjects as $objectName => $objectValue) {
@@ -105,7 +105,7 @@ class Post {
      * @return array
      */
     public function getContent() {
-        return !$this->currentTranslation ? $this->content : $this->currentTranslation->getContent();
+        return $this->content;
     }
 
     /**

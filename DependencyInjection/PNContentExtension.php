@@ -32,7 +32,6 @@ class PNContentExtension extends Extension {
 
     private function convertConfigToParameter(ContainerBuilder $container, $config) {
         $container->setParameter($this->alias . '_post_class', $config['post_class']);
-        $container->setParameter($this->alias . '_post_translation_class', $config['post_translation_class']);
     }
 
 }

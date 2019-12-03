@@ -268,7 +268,7 @@ class DynamicContentAttribute {
      * @return string
      */
     public function getValue() {
-        return !$this->currentTranslation ? $this->value : $this->currentTranslation->getValue();
+        return $this->value;
     }
 
 }
