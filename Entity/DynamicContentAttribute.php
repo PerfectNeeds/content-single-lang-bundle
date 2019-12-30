@@ -70,6 +70,16 @@ class DynamicContentAttribute {
     protected $type;
 
     /**
+     * @ORM\Column(name="image_width", type="float", nullable=true)
+     */
+    protected $imageWidth;
+
+    /**
+     * @ORM\Column(name="image_height", type="float", nullable=true)
+     */
+    protected $imageHeight;
+
+    /**
      * @var string
      * @ORM\Column(name="hint", type="string", nullable=true)
      */
@@ -269,6 +279,48 @@ class DynamicContentAttribute {
      */
     public function getValue() {
         return $this->value;
+    }
+
+    /**
+     * Set imageWidth
+     *
+     * @param float $imageWidth
+     * @return DynamicContentAttribute
+     */
+    public function setImageWidth($imageWidth) {
+        $this->imageWidth = $imageWidth;
+
+        return $this;
+    }
+
+    /**
+     * Get imageWidth
+     *
+     * @return float
+     */
+    public function getImageWidth() {
+        return $this->imageWidth;
+    }
+
+    /**
+     * Set imageHeight
+     *
+     * @param float $imageHeight
+     * @return DynamicContentAttribute
+     */
+    public function setImageHeight($imageHeight) {
+        $this->imageHeight = $imageHeight;
+
+        return $this;
+    }
+
+    /**
+     * Get imageHeight
+     *
+     * @return float
+     */
+    public function getImageHeight() {
+        return $this->imageHeight;
     }
 
 }
