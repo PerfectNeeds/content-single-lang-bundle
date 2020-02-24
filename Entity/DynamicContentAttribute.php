@@ -16,6 +16,7 @@ class DynamicContentAttribute {
     CONST TYPE_LINK = 3;
     CONST TYPE_IMAGE = 4;
     CONST TYPE_DOCUMENT = 5;
+    CONST TYPE_HTML = 6;
 
     public static $types = [
         "Text (100 character)" => self::TYPE_TEXT,
@@ -23,6 +24,7 @@ class DynamicContentAttribute {
         "Link" => self::TYPE_LINK,
         "Image" => self::TYPE_IMAGE,
         "Document" => self::TYPE_DOCUMENT,
+        "HTML Tags" => self::TYPE_HTML,
     ];
 
     /**
