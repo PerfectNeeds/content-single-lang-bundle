@@ -16,3 +16,7 @@ services:
     
     PN\ContentBundle\Twig\:
         resource: '../../Twig/*'
+    
+    PN\ContentBundle\Service\:
+        resource: '../../Service/*'
+        public: true
